@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mcflutter/form.dart';
-
+import 'package:mcflutter/form/form.dart';
+import 'package:mcflutter/form/to_do_page.dart';
 
 
 void main() {
@@ -8,27 +8,27 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-    const MyApp({super.key});
+  const MyApp({super.key});
 
-    @override
-    Widget build(BuildContext context) {
-        return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-            primarySwatch: Colors.blue,
-        ),
-        home: const MyHomePage(),
-        );
-    }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
 }
 
 class MyHomePage extends StatefulWidget {
-    const MyHomePage({super.key});
+  const MyHomePage({super.key});
 
-    final String title = 'Flutter Demo Home Page';
+  final String title = 'Flutter Demo Home Page';
 
-    @override
-    State<MyHomePage> createState() => _MyHomePageState();
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -54,40 +54,48 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      
-  appBar: AppBar(
-    title: Text(widget.title),
-  ),
-  // Menambahkan drawer menu
-  drawer: Drawer(
-      child: Column(
-        children: [
-          // Menambahkan clickable menu
-          ListTile(
-            title: const Text('Counter'),
-            onTap: () {
-              // Route menu ke halaman utama
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const MyHomePage()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('Form'),
-            onTap: () {
-              // Route menu ke halaman form
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const MyFormPage()),
-              );
-            },
-          ),
-        ],
+      appBar: AppBar(
+        title: Text(widget.title),
       ),
-    ),
-  body: Center(
-  
+      // Menambahkan drawer menu
+      drawer: Drawer(
+        child: Column(
+          children: [
+            // Menambahkan clickable menu
+            ListTile(
+              title: const Text('Counter'),
+              onTap: () {
+                // Route menu ke halaman utama
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyHomePage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Form'),
+              onTap: () {
+                // Route menu ke halaman form
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyFormPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('To Do'),
+              onTap: () {
+                // Route menu ke halaman to do
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ToDoPage()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -108,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have click the button this many times:',
+              'You have clicked the button this many times',
             ),
             Text(
               '$_counter',
